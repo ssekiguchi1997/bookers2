@@ -17,7 +17,9 @@
       <nav class= "navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand">
-            <span>Bookers</span>
+            <%= link_to '/', class: "text-light" do %>
+              <h3>Bookers</h3>
+            <% end %>
           </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -26,36 +28,54 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "Home" , "/books", class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-house"></i> Home'.html_safe, "/", class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "New book", new_book_path, class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-users"></i> Users'.html_safe, users_path, class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "User info", user_path(current_user.id), class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-book-open"></i> Books'.html_safe, books_path, class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-right-from-bracket"></i> Log out'.html_safe, destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "Home" , "/", class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-house"></i> Home'.html_safe, "/", class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "about" , "/about", class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-link"></i> About'.html_safe, "home/about", class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-user-plus"></i> Sign up'.html_safe, new_user_registration_path, class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path, class: "nav-link text-light" %>
+                  <%= link_to '<i class="fa-solid fa-right-to-bracket"></i> Log in'.html_safe, new_user_session_path, class: "nav-link text-light" %>
                 </li>
               <% end %>
             </ul>
           </div>
-       - </div>
+        </div>
       </nav>
     </header>
+    <div class="container mt-4">
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-danger"><p>error</p>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div>
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+    <footer class="mt-5 text-black text-center">
+      <p>CopyRight Infratop.inc<p>
+    </footer>
   </body>
 </html>

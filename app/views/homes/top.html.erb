@@ -1,2 +1,14 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="mx-auto">
+      <h1>Welcome to <i class="fa-solid fa-book"></i><strong>Bookers!</strong></h1><br>
+      <h4>In<i class="fa-solid fa-book"></i> <strong>Bookers</strong>,</h4><br>
+      <h4>you can share and exchange your opinions , inpressions , and emotions</h4><br>
+      <h4>about various books!</h4>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "Log in", new_user_session_path, class: "btn-wrapper btn btn-primary col-7 nav-link text-light text-center" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "mt-4 btn-wrapper btn btn-success col-7 nav-link text-light text-center" %>
+  </div>
+</div>

@@ -1,6 +1,3 @@
-<div>
-  <%= flash[:notice] %>
-</div>
 <div class="container px-5 px-sm-0 mt-4">
   <div class="row">
     <div class="col-md-3">
@@ -21,7 +18,7 @@
         </tbody>
       </table>
       <div class="row justify-content-center mt-4">
-        <%= link_to '<i class="fa-solid fa-user-gear"></i>'.html_safe, edit_user_path(current_user), class: "btn-wrapper col-10 nav-link text-dark text-center border border-dark rounded" %>
+          <%= link_to '<i class="fa-solid fa-user-gear"></i>'.html_safe, edit_user_path(current_user), class: "btn-wrapper col-10 nav-link text-dark text-center border border-dark rounded" %>
       </div><br>
       <div class="row">
         <h1>New Book</h1>
@@ -37,30 +34,28 @@
       </div>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>Books</h2>
+      <h2>Users</h2>
         <table class="table">
           <thead>
             <tr>
-              <th></name>
-              <th>Title</th>
-              <th>Opinion</th>
+              <th>image</name>
+              <th>name</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <% @books.each do |book| %>
+            <% @users.each do |user| %>
               <tr>
                 <td>
-                  <%= link_to user_path(book.user.id) do %>
-                    <%= image_tag book.user.get_profile_image(100,100) %>
+                  <%= link_to user_path(user.id) do %>
+                    <%= image_tag user.get_profile_image(100,100) %>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to book_path(book.id) do %>
-                    <%= book.title %>
-                  <% end %>
+                  <%= user.name %>
                 </td>
                 <td>
-                  <%= book.body %>
+                  <%= link_to "Show", user_path(user.id) %>
                 </td>
               </tr>
             <% end %>
